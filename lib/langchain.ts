@@ -17,8 +17,6 @@ import { Fireworks } from "@langchain/community/llms/fireworks";
 import Together from "together-ai";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
-const together = new Together();
-
 export const indexName = "pdf-chat-index";
 
 export const embeddings = new HuggingFaceInferenceEmbeddings({
