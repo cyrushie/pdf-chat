@@ -6,7 +6,7 @@ import { auth } from "@clerk/nextjs/server";
 const ChatToFilePage = async ({ params }: { params: { id: string } }) => {
   auth.protect();
   const { userId } = await auth();
-  const { id } = await params;
+  const { id } = params;
 
   if (!userId) {
     throw new Error("User not found");
