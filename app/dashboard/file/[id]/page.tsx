@@ -4,15 +4,13 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 
 type ChatToFilePageProps = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>; // ✅ params is a Promise
 };
 
 const ChatToFilePage = async ({ params }: ChatToFilePageProps) => {
   auth.protect();
   const { userId } = await auth();
-  const { id } = params; // ✅ just an object
+  const { id } = await params; // ✅ must await
 
   if (!userId) {
     throw new Error("User not found");
